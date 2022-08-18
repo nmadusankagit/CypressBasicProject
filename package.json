@@ -1,0 +1,56 @@
+{
+  "name": "lymited_automation",
+  "version": "1.0.0",
+  "description": "Lymited Cypress Automation",
+  "main": "index.js",
+  "dependencies": {
+    "concurrently": "^5.2.0",
+    "cypress-downloadfile": "^1.2.1",
+    "cypress-visual-regression": "^1.4.0",
+    "cypress-xpath": "^1.6.0",
+    "gmail-tester": "^1.2.5",
+    "junit-report-merger": "^2.2.3",
+    "mysql": "^2.18.1",
+    "pdfjs-dist": "*"
+  },
+  "devDependencies": {
+    "cypress": "^8.7.0",
+    "cypress-file-upload": "^4.1.1",
+    "get-folder-size": "^3.1.0",
+    "json-stringify-safe": "^5.0.1",
+    "mocha": "^9.1.1",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0"
+  },
+  "scripts": {
+    "//////////////////////////////////////////////Moca Report Generation": "////////////////////////////////////////////",
+    "vedioclean": "rm -rf cypress/videos/",
+    "mocaclean": "rm -rf cypress/results/",
+    "htmlreportclean": "rm -rf combinehtml/",
+    "cypressdirclean": "npm run vedioclean && npm run mocaclean && npm run htmlreportclean",
+    "mocamerge": "mochawesome-merge cypress/results/*.json > cypress/results/mocacombine.json",
+    "mocahtml": "marge --reportDir combinehtml cypress/results/mocacombine.json",
+    "generatereport": "npm run mocamerge && npm run mocahtml",
+    "/////////////////////////////////////////////////////////": "/////////////////////////////////////////////////////////"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/mochawesome",
+      "**/mochawesome/**",
+      "**/mocha",
+      "**/mocha/**",
+      "**/cypress",
+      "**/cypress/**"
+    ]
+  },
+  "author": "nipuna",
+  "license": "ISC"
+}
